@@ -4,24 +4,24 @@
  </head>
  <body>
  <?php 
- 	/**
- 	If using MySQL as backend database, you would query the database by creating a connection as such:
- 	$servername = "localhost";
- 	$username = "username";
- 	$password = "password";
- 	$dbname = "dbname";
+/**
+If using MySQL as backend database, you would query the database by creating a connection as such:
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "dbname";
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-    	die("Connection failed: " . $conn->connect_error);
-	} 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+} 
 
-	You then substitute the PHP array creation statement with a query to the server, with a while loop linking
-	through the SQL query by row until the a set time limit or until the database is completely parsed through
-	into a usable array within PHP, in this case $table, which is a nested array.
- 	**/
+You then substitute the PHP array creation statement with a query to the server, with a while loop linking
+through the SQL query by row until the a set time limit or until the database is completely parsed through
+into a usable array within PHP, in this case $table, which is a nested array.
+**/
  	$table = array (
     'itemID' => array(
         1,2,3,4,5,6,7,8,9,10,11,12
@@ -35,19 +35,19 @@
 );
 outputChild(0, $table);
 
-	/**
-	Outputs child items recursively
- 	integer $parentItemID Parent item itemID
- 	array   $table        Table Data (itemID, item, and subItemOfID)
- 	*/
+/**
+Outputs child items recursively
+integer $parentItemID Parent item itemID
+array   $table        Table Data (itemID, item, and subItemOfID)
+**/
 
 function outputChild($parentItemID, array $table)
 {
-    /** 
-    Obtain the child nodes of the array that are associated with subItemOfID relative to
-    the initial itemID. This associates the children to a parent key allowing them to be
-    correctly nested into a list.
- 	**/
+/** 
+Obtain the child nodes of the array that are associated with subItemOfID relative to
+the initial itemID. This associates the children to a parent key allowing them to be
+correctly nested into a list.
+**/
     $children = array();
     foreach ($table['itemID'] as $key => $value) {
         if ($table['subItemOfID'][$key] == $parentItemID) {
