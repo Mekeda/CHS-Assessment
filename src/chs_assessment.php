@@ -23,7 +23,7 @@ $time_start = microtime(true);
 // through the SQL query by row until the a set time limit or until the database is completely parsed through
 // into a usable array within PHP, in this case $table, which is a nested array.
 
- 	$table = array (
+ $table = array (
     'itemID' => array(
         1,2,3,4,5,6,7,8,9,10,11,12
     ),
