@@ -4,7 +4,8 @@
  </head>
  <body>
  <?php 
-
+// Measure the time start of the PHP script.
+$time_start = microtime(true);
 // If using MySQL as backend database, you would query the database by creating a connection as such:
 // $servername = "localhost";
 // $username = "username";
@@ -68,6 +69,17 @@ function outputChild($parentItemID, array $table)
         echo '</ul>';
     }
 } 
+// Display Script End time
+$time_end = microtime(true);
+
+// Execution time within seconds
+$execution_time = ($time_end - $time_start);
+
+// Execution time of the script
+echo nl2br("Total Execution Time:".$execution_time." Secs \r\n");
+
+// Memory usage of the script in MB
+echo "Memory Usage: " . (memory_get_usage()/1048576) . " MB \n";
 ?> 
  </body>
 </html>
